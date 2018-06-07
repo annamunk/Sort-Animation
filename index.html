@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/validate-number.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
+		<title>Sortowanie</title>
+		<script>
+			$(document).ready(function() {
+				inputButtonsLock();
+				sortButtonsLock();
+				$('#numb').on('input', function() {
+					validateNumber($(this).val());
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<article class="sorting">
+			<h2>Podaj liczby do posortowania:</h2>
+			<div id="table-headers">
+				
+				<div id="second-row" >
+					<div>
+						<p>Nowa liczba:</p>
+						<input type="text" id="numb"/>
+						<button type="button" id="submit" class="btn btn-primary" onclick="addElement();">+</button><br>
+					</div>
+					<div>
+						<p>Usuń ostatni element:</p>
+						<button type="button" id="deleteLast" class="btn btn-primary" onclick="removeLastElement();">-</button>
+					</div>
+					<div>
+						<p>Usuń wszystkie:</p>
+						<button type="button" id="delete" class="btn btn-primary" onclick="removeAllElements();">-</button>
+					</div>
+					<div>
+						<p>Sortuj Bubble</p>
+						<button type="button" id="webWorkerBubbleOn" class="btn btn-primary" onclick="webWorkerBubbleStart()">Włącz</button>
+						<button type="button" id="webWorkerBubbleOff" class="btn btn-primary" onclick="webWorkerStop('bubble');">Wyłącz</button>
+					</div>
+					<div>
+						<p>Sortuj Insert</p>
+						<button type="button" id="webWorkerInsertOn" class="btn btn-primary" onclick="webWorkerInsertStart()">Włącz</button>
+						<button type="button" id="webWorkerInsertOff" class="btn btn-primary" onclick="webWorkerStop('insert');">Wyłącz</button>
+					</div>
+				</div>
+				<span id="validationAlert"></span>
+			</div>
+			<section id="numbArr" >
+			</section>
+			<h2 id="bubbleHeader" style="display:none">Sortowanie bąbelkowe:</h2>
+			<section id="bubbleArr" style="display:none">
+			</section>
+			<h2 id="insertHeader" style="display:none">Sortowanie przez wstawianie:</h2>
+			<section id="insertArr" style="display:none">
+			</section>
+		</article><!-- end of "sorting"-->
+	</body>
+</html>
